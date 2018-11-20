@@ -11,12 +11,16 @@ Last but not least, since you can run multiple emulators in parallel, the tool a
 ## Semi-Random Payloads
 One of the key features of this utility is to enter a payload that is transformed by Enzo Online automatically. Since each emulator can virtualize multiple devices (hundreds), you can easily specify a payload that will vary for each device using specific functions. For example, the #deviceid() function stores the current device id; the #rdnint(a,b) returns an integer between a (included) and b (excluded), the #utcnow() returns the current timestamp in UTC, and the #rndguid() returns a random Guid. Additional functions are available, and can be found in a help file displayed from a link on the emulator window. 
 
-Here is an example of a semi-random payload:
+Here is an example of a semi-random payload: 
+
 { "deviceid": "#deviceid()", "clienttime": "#utcnow()", "devicetype": "#pick(lamp,fridge,door)", "value": #rndint(0,100), "uniqueid": "#rndguid()" }
 
 Which can yields the following results when proceesed through Enzo Online by the SendTestData method:
+
 { "deviceid": "test13", "clienttime": "11/20/2018 7:56:16 PM", "devicetype": "door", "value": 75, "uniqueid": "3c26b346-2ec6-448a-93b2-d6b4ece8e12c" }
+
 { "deviceid": "test11", "clienttime": "11/20/2018 7:56:16 PM", "devicetype": "fridge", "value": 0, "uniqueid": "d01a796a-7ea9-4057-b682-209afb4d7b61" }
+
 { "deviceid": "test111", "clienttime": "11/20/2018 7:56:16 PM", "devicetype": "door", "value": 0, "uniqueid": "bf64079a-b48b-4339-abaf-008508356d27" }
 
 ## Enzo Online
