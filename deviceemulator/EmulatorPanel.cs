@@ -76,6 +76,8 @@ namespace deviceemulator
         {
 
         }
+        
+        public Emulator Emulator { get { return _emulator; } }
 
         private void buttonStartStop_Click(object sender, EventArgs e)
         {
