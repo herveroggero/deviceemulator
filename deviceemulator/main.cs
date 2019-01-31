@@ -169,6 +169,13 @@ namespace deviceemulator
 
                     RefreshUI();
                     RefreshMenu();
+                    
+                    // Change enzo connection settings on all emulators
+                    foreach (TabPage page in tabControlEmulators.TabPages)
+                    {
+                        var emulatorPanel = (EmulatorPanel)page.Controls[0];
+                        emulatorPanel.Emulator.EnzoIoTHub = EnzoIoTHub;
+                    }
                 }
             }
             catch { }
@@ -337,6 +344,7 @@ namespace deviceemulator
                     var emulatorPanel = (EmulatorPanel)page.Controls[0];
                     if (emulatorPanel.CanStart)
                     {
+                        emulatorPanel.Emulator.EnzoIoTHub = EnzoIoTHub;
                         emulatorPanel.Start();
                     }
                 }
@@ -409,6 +417,7 @@ namespace deviceemulator
 
                     foreach (var emulator in _emulators)
                     {
+                        emulator.EnzoIoTHub = EnzoIoTHub;
                         TabPage page = new TabPage();
                         EmulatorPanel panel = new EmulatorPanel(emulator);
                         panel.Dock = DockStyle.Fill;
