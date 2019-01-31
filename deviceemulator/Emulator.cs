@@ -36,6 +36,8 @@ namespace deviceemulator
             EmulatorId = Guid.NewGuid();
         }
 
+        public EnzoHttpAzureIoTHub EnzoIoTHub { get { return _enzo; } set { _enzo = value; } }
+
         public Guid EmulatorId { get; set; }
 
         public bool IsRunning { get { return (_thread == null) ? false : _thread.IsAlive; } }
